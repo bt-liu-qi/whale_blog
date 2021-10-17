@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = BizException.class)
     @ResponseBody
     public ResultBody bizExceptionHandler(HttpServletRequest req, BizException e){
-        logger.error("发生业务异常！原因是：{}",e.getErrorMsg());
+        logger.error("发生业务异常！原因是：{}",e);
         return ResultBody.error(e.getErrorCode(),e.getErrorMsg());
     }
 

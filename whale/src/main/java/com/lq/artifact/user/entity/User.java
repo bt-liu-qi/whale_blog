@@ -4,9 +4,14 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 用户表(User)表实体类
@@ -42,7 +47,7 @@ public class User extends Model<User> {
     //最后登录时间
     private Date lastLoginTime;
     //昵称
-    private String nickname;
+    private String nickName;
     //创建人
     private Long createUserId;
     //更新时间
@@ -52,10 +57,17 @@ public class User extends Model<User> {
     //修改人
     private Long updateUserId;
     //是否逻辑删除 1 是 0 否
+    @TableLogic
     private Integer isDel;
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-
+    @Id
+    public Long getId() {
+        return id;
+    }
 }
 

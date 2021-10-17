@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
-@MapperScan("com.lq.artifact.user.dao")
 @EnableOpenApi
 @SpringBootApplication
 public class ArtifactApplication {

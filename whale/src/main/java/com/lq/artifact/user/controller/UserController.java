@@ -15,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -107,7 +108,7 @@ public class UserController extends ApiController {
     @ApiOperation(value = "用户登陆", notes = "")
     @ApiResponse(responseCode = "2000")
     @PostMapping("login")
-    public R login(LoginDTO loginDTO) {
+    public R login(@RequestBody @Validated LoginDTO loginDTO) {
         return success(this.userService.login(loginDTO));
     }
 
@@ -118,11 +119,24 @@ public class UserController extends ApiController {
      * @param user
      * @return
      */
-    @ApiOperation(value = "用户登陆", notes = "")
+    @ApiOperation(value = "注册", notes = "")
     @ApiResponse(responseCode = "2000")
     @PostMapping("register")
     public R register(@RequestBody UserRegisterDTO user) {
         return success(this.userService.register(user));
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param uid
+     * @return
+     */
+    @ApiOperation(value = "获取用户信息", notes = "")
+    @ApiResponse(responseCode = "2000")
+    @GetMapping("info")
+    public R info(@RequestParam("token") String uid) {
+        return success(this.userService.getUserInfo(uid));
     }
 
 
@@ -136,7 +150,6 @@ public class UserController extends ApiController {
     public R generateId() {
         String idStr = snowflake.nextIdStr();
         log.info("【生成分布式id】 id：{}",idStr);
-        int a = 10 / 0;
         return success(idStr);
     }
 

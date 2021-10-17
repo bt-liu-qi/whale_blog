@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lq.artifact.user.controller.dto.LoginDTO;
 import com.lq.artifact.user.controller.dto.UserRegisterDTO;
+import com.lq.artifact.user.controller.vo.UserLoginVO;
 import com.lq.artifact.user.entity.User;
 
 /**
@@ -19,7 +20,7 @@ public interface UserService extends IService<User> {
      * @param user 用户信息
      * @return
      */
-    R login(LoginDTO user);
+    UserLoginVO login(LoginDTO user);
 
 
     /**
@@ -28,6 +29,13 @@ public interface UserService extends IService<User> {
      * @return
      */
     User register(UserRegisterDTO userRegisterDTO);
+
+    /**
+     * 查询用户信息
+     * @param uid
+     * @return
+     */
+    User getUserInfo(String uid);
 
 }
 
