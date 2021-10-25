@@ -37,7 +37,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, Blog> implements BlogS
         final List<Blog> list = baseMapper.selectList(new QueryWrapper<>());
         List<BlogVO> blogVOList = new ArrayList<>();
         list.stream().forEach(data -> {
-            final BlogSort byId = blogSortService.getById(data.getClassId());
+            final BlogSort byId = blogSortService.getById(data.getSortId());
             final BlogVO blogVO = new BlogVO();
             BeanUtils.copyProperties(data, blogVO);
             blogVO.setClassName(byId.getName());

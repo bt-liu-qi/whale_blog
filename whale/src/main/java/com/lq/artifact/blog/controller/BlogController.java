@@ -84,7 +84,7 @@ public class BlogController extends ApiController {
         final Page<Blog> essayPage = this.blogService.page(page, new QueryWrapper<>(essay));
         List<BlogVO> blogVOList = new ArrayList<>();
         essayPage.getRecords().stream().forEach(data -> {
-            BlogSort classDo = blogSortService.getById(data.getClassId());
+            BlogSort classDo = blogSortService.getById(data.getSortId());
             BlogContent content = essayContentService.getById(data.getId());
             if (Objects.isNull(content)){
                 content = new BlogContent();
