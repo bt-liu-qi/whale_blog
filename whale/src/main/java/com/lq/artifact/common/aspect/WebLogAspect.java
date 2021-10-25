@@ -18,7 +18,7 @@ public class WebLogAspect {
     private final static Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
 
     /** 以 controller 包下定义的所有请求为切入点 */
-    @Pointcut("execution(public * com.lq.artifact.user.controller..*.*(..))")
+    @Pointcut("execution(public * com.lq.artifact.*.controller..*.*(..))")
     public void webLog() {}
 
     /**

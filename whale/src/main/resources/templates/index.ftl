@@ -227,7 +227,7 @@
                         <div class="content-box">
 
                             <div class="posts-gallery-img"><a href='javascript:0'><img class="thumbnail"
-                                                                                       src="${item.url!}"
+                                                                                       src="${item.coverUrl!}"
                                                                                        alt="${item.title!}"></a></div>
 
                             <div class="posts-gallery-content">

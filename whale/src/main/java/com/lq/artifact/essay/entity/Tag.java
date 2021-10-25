@@ -1,27 +1,30 @@
 package com.lq.artifact.essay.entity;
 
-import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * (Essay)表实体类
+ * (Tag)表实体类
  *
  * @author makejava
- * @since 2021-10-22 21:24:24
+ * @since 2021-10-25 21:09:30
  */
 @Data
+@TableName("t_tag")
 @SuppressWarnings("serial")
-@TableName("t_essay")
-public class Essay extends Model<Essay> {
+public class Tag extends Model<Tag> {
     //主键
-    private Long id;
-    //标题
-    private String title;
+    @TableId(type = IdType.AUTO)
+    private Integer id;
+    //标签名称
+    private String name;
     //创建人
     private Long createUserId;
     //修改时间
@@ -32,24 +35,6 @@ public class Essay extends Model<Essay> {
     private Long updateUserId;
     //删除
     private Integer isDel;
-    //状态
-    private Integer status;
-    //简介
-    private String sketch;
-    //文章作者
-    private String author;
-    //浏览量
-    private Long pv;
-    //分类
-    private Integer classId;
-    //封面
-    private String coverUrl;
-    //是否开启评论
-    private Integer isComment;
-    //评论数
-    private Integer commentCount;
-    //发布时间
-    private Date publishTime;
 
 
 

@@ -1,6 +1,7 @@
 package com.lq.artifact.essay.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lq.artifact.essay.dto.EssayDTO;
 import com.lq.artifact.essay.entity.Essay;
 import com.lq.artifact.essay.vo.EssayVO;
 
@@ -15,6 +16,15 @@ import java.util.List;
 public interface EssayService extends IService<Essay> {
 
     List<EssayVO> listAll();
+
+    /**
+     * 更新文章
+     * @param essayDTO
+     */
+    int updateContent(EssayDTO essayDTO);
+
+
+    int saveEssay(EssayDTO essayDTO);
 
 }
 

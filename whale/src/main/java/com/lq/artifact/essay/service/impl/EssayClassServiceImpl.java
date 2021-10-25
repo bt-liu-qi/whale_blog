@@ -15,5 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class EssayClassServiceImpl extends ServiceImpl<EssayClassDao, EssayClass> implements EssayClassService {
 
+
+
+
+
 }
 

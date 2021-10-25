@@ -10,4 +10,9 @@ public class EssayVO extends Essay {
      * 分类名称
      */
     private String className;
+
+    /**
+     * 文章内容
+     */
+    private String content;
 }
