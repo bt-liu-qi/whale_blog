@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParser
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-@MapperScan({"com.lq.artifact.user.dao","com.lq.artifact.system.dao","com.lq.artifact.essay.dao"})
+@MapperScan({"com.lq.artifact.user.dao","com.lq.artifact.system.dao","com.lq.artifact.blog.dao"})
 @Configuration
 public class MybatisPlusConfig {
     @Bean

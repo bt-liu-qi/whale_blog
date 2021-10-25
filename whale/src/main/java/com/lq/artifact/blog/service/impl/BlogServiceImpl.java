@@ -9,7 +9,7 @@ import com.lq.artifact.blog.entity.BlogSort;
 import com.lq.artifact.blog.entity.BlogContent;
 import com.lq.artifact.blog.service.BlogService;
 import com.lq.artifact.blog.service.BlogSortService;
-import com.lq.artifact.blog.service.EssayContentService;
+import com.lq.artifact.blog.service.BlogContentService;
 import com.lq.artifact.blog.vo.BlogVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * (Blog)表服务实现类
@@ -30,7 +31,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, Blog> implements BlogS
     @Resource
     private BlogSortService blogSortService;
     @Resource
-    private EssayContentService essayContentService;
+    private BlogContentService blogContentService;
 
 
     public List<BlogVO> listAll() {
@@ -53,10 +54,16 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, Blog> implements BlogS
         Blog essay = new Blog();
         BeanUtils.copyProperties(blogDTO,essay);
         final int i = baseMapper.updateById(essay);
+        final BlogContent blogContentDO = blogContentService.getById(blogDTO.getId());
+
         BlogContent blogContent = new BlogContent();
         blogContent.setId(blogDTO.getId());
         blogContent.setContent(blogDTO.getContent());
-        essayContentService.updateById(blogContent);
+        if (Objects.isNull(blogContentDO)){
+            blogContentService.save(blogContent);
+            return i;
+        }
+        blogContentService.updateById(blogContent);
         return i;
     }
 
@@ -64,11 +71,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogDao, Blog> implements BlogS
     public int saveEssay(BlogDTO blogDTO) {
         Blog essay = new Blog();
         BeanUtils.copyProperties(blogDTO,essay);
-        final int i = baseMapper.updateById(essay);
+        final int i = baseMapper.insert(essay);
         BlogContent blogContent = new BlogContent();
         blogContent.setId(blogDTO.getId());
         blogContent.setContent(blogDTO.getContent());
-        essayContentService.save(blogContent);
+        blogContentService.save(blogContent);
         return i;
     }
 

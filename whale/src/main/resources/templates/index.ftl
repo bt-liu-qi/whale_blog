@@ -233,7 +233,7 @@
 
                                 <div class="posts-gallery-content">
 
-                                    <h2><a href='javascript:0' target="_blank">${item.title}</a></h2>
+                                    <h2><a href='/article?id=${item.id}' target="_blank">${item.title}</a></h2>
 
                                     <div class="posts-gallery-text">
                                         ${item.sketch}
@@ -244,15 +244,15 @@
                                         <ul>
 
                                             <li class="ico-cat"><i class="iconfont icon-liebiao"></i> <a
-                                                        href='javascript:0'
+                                                        href='/article?id=${item.id}'
                                                         target="_blank">${item.className}</a>
                                             </li>
 
                                             <li class="ico-time"><i class="iconfont icon-iconfontshijian"></i>
-                                                2020-04-24
+                                                ${item.publishTime!?string("yyyy年MM月dd日")}
                                             </li>
 
-                                            <li class="ico-eye"><i class="iconfont icon-yanjing1"></i> 4</li>
+                                            <li class="ico-eye"><i class="iconfont icon-yanjing1"></i> ${item.pv}</li>
 
                                         </ul>
 
@@ -481,15 +481,9 @@
         </div>
 
         <div class="links-footer"><span>友情链接：</span>
-            <a href='http://www.tkv5.cn' target='_blank'>网站源码</a>
-            <a href='http://www.tkv5.cn' target='_blank'>织梦模板</a>
-            <a href='http://www.tkv5.cn' target='_blank'>模版下载</a>
-            <a href='http://www.tkv5.cn' target='_blank'>dedecms模板</a>
-            <a href='http://www.tkv5.cn' target='_blank'>dede模版</a>
-            <a href='http://www.tkv5.cn' target='_blank'>仿站</a>
-            <a href='http://www.tkv5.cn' target='_blank'>图标下载</a>
-            <a href='http://www.tkv5.cn' target='_blank'>网站模板</a>
-            <a href='http://www.tkv5.cn' target='_blank'>源码下载</a>
+            <#list linkList as link>
+                <a href='${link.url!}' target='_blank'>${link.name!}</a>
+            </#list>
         </div>
 
     </div>

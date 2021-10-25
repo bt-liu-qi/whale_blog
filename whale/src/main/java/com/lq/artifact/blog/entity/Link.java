@@ -2,23 +2,28 @@ package com.lq.artifact.blog.entity;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 
 /**
- * (BlogTag)表实体类
+ * 网站外链(Link)表实体类
  *
  * @author makejava
- * @since 2021-10-25 22:48:53
+ * @since 2021-10-25 23:08:29
  */
+@TableName("t_link")
 @SuppressWarnings("serial")
-@TableName("t_blog_tag")
-public class BlogTag extends Model<BlogTag> {
-    //主键
+public class Link extends Model<Link> {
+
+    @TableId(type = IdType.AUTO)
     private Integer id;
-    //标签名称
+    //外链名称
     private String name;
+    //外链url
+    private String url;
     //创建人
     private Long createUserId;
     //修改时间
@@ -45,6 +50,14 @@ public class BlogTag extends Model<BlogTag> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Long getCreateUserId() {

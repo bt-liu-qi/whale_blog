@@ -9,7 +9,7 @@ import com.lq.artifact.blog.entity.BlogContent;
  * @author makejava
  * @since 2021-10-22 21:25:38
  */
-public interface EssayContentService extends IService<BlogContent> {
+public interface BlogContentService extends IService<BlogContent> {
 
 }
 

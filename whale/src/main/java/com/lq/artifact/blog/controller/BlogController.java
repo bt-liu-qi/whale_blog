@@ -6,12 +6,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lq.artifact.blog.dto.BlogDTO;
 import com.lq.artifact.blog.entity.Blog;
 import com.lq.artifact.blog.entity.BlogSort;
 import com.lq.artifact.blog.entity.BlogContent;
 import com.lq.artifact.blog.service.BlogService;
 import com.lq.artifact.blog.service.BlogSortService;
-import com.lq.artifact.blog.service.EssayContentService;
+import com.lq.artifact.blog.service.BlogContentService;
 import com.lq.artifact.blog.vo.BlogVO;
 import com.lq.artifact.common.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class BlogController extends ApiController {
     @Resource
     private BlogSortService blogSortService;
     @Resource
-    private EssayContentService essayContentService;
+    private BlogContentService blogContentService;
     @PostMapping("/upload")
     @ResponseBody
     public R upload(@RequestParam("file") List<MultipartFile> file) {
@@ -85,7 +86,7 @@ public class BlogController extends ApiController {
         List<BlogVO> blogVOList = new ArrayList<>();
         essayPage.getRecords().stream().forEach(data -> {
             BlogSort classDo = blogSortService.getById(data.getSortId());
-            BlogContent content = essayContentService.getById(data.getId());
+            BlogContent content = blogContentService.getById(data.getId());
             if (Objects.isNull(content)){
                 content = new BlogContent();
             }
@@ -122,8 +123,8 @@ public class BlogController extends ApiController {
      * @return 新增结果
      */
     @PostMapping
-    public R insert(@RequestBody Blog blog) {
-        return success(this.blogService.save(blog));
+    public R insert(@RequestBody BlogDTO blog) {
+        return success(this.blogService.saveEssay(blog));
     }
 
     /**
@@ -133,8 +134,8 @@ public class BlogController extends ApiController {
      * @return 修改结果
      */
     @PutMapping
-    public R update(@RequestBody Blog blog) {
-        return success(this.blogService.updateById(blog));
+    public R update(@RequestBody BlogDTO blog) {
+        return success(this.blogService.updateContent(blog));
     }
 
     /**

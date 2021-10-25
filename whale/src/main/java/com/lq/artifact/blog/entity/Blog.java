@@ -2,6 +2,8 @@ package com.lq.artifact.blog.entity;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
@@ -19,7 +21,8 @@ import java.io.Serializable;
 @TableName("t_blog")
 public class Blog extends Model<Blog> {
     //主键
-    private Long id;
+    @TableId(type = IdType.INPUT)
+    private String id;
     //标题
     private String title;
     //状态

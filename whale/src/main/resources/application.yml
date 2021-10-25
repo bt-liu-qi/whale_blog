@@ -43,8 +43,7 @@ spring:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/file/,classpath:/static/,classpath:/public/,file:/home/uploads/
 # Mybatis-Plus 配置
 mybatis-plus:
-    mapper-locations: classpath:/mapper/*Mapper.xml
-
+  #  mapper-locations: classpath:/mapper/*Mapper.xml
   global-config:
     id-type: 1  #0:数据库ID自增   1:用户输入id
     db-column-underline: false
