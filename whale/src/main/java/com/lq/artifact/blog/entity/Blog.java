@@ -1,4 +1,4 @@
-package com.lq.artifact.essay.entity;
+package com.lq.artifact.blog.entity;
 
 import java.util.Date;
 
@@ -14,21 +14,33 @@ import java.io.Serializable;
  * (Essay)表实体类
  *
  * @author makejava
- * @since 2021-10-17 14:11:07
+ * @since 2021-10-22 21:24:24
  */
 @Data
 @SuppressWarnings("serial")
-@TableName("t_essay")
-public class Essay extends Model<Essay> {
+@TableName("t_blog")
+public class Blog extends Model<Blog> {
     //主键
     @TableId(type = IdType.INPUT)
-    private Long id;
+    private String id;
     //标题
     private String title;
-    //分类
-    private Long classId;
-    //文章内容
-    private String content;
+    //状态
+    private Integer status;
+    //封面
+    private String coverUrl;
+    //简介
+    private String sketch;
+    //文章作者
+    private String author;
+    //是否开启评论
+    private Integer isComment;
+    //评论数
+    private Integer commentCount;
+    //浏览量
+    private Long pv;
+    //发布时间
+    private Date publishTime;
     //创建人
     private Long createUserId;
     //修改时间
@@ -39,22 +51,10 @@ public class Essay extends Model<Essay> {
     private Long updateUserId;
     //删除
     private Integer isDel;
-    //状态
-    private String status;
-    //文章封面
-    private String coverUrl;
-    //文章简述
-    private String sketch;
-    //作者
-    private String author;
-    //是否开启评论
-    private Integer isComment;
-    //评论数
-    private Integer commentCount;
-    //浏览量
-    private Long pv;
-    //发布时间
-    private Date publishTime;
+    //分类
+    private Integer sortId;
+
+
 
 
 

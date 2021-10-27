@@ -1,4 +1,4 @@
-package com.lq.artifact.essay.entity;
+package com.lq.artifact.blog.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -18,8 +18,8 @@ import java.util.Date;
  */
 @Data
 @SuppressWarnings("serial")
-@TableName("t_essay_class")
-public class EssayClass extends Model<EssayClass> {
+@TableName("t_blog_sort")
+public class BlogSort extends Model<BlogSort> {
 
     @TableId(type = IdType.AUTO)
     private Integer id;

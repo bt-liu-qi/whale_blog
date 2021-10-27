@@ -3,22 +3,22 @@ package com.lq.artifact.common.aspect;
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-
+@Aspect
+@Component
 public class WebLogAspect {
     private final static Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
 
     /** 以 controller 包下定义的所有请求为切入点 */
-    @Pointcut("execution(public * com.lq.artifact.user.controller..*.*(..))")
+    @Pointcut("execution(public * com.lq.artifact..*.controller..*.*(..))")
     public void webLog() {}
 
     /**

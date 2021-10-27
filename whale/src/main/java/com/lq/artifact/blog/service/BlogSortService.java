@@ -1,7 +1,7 @@
-package com.lq.artifact.essay.service;
+package com.lq.artifact.blog.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lq.artifact.essay.entity.EssayClass;
+import com.lq.artifact.blog.entity.BlogSort;
 
 /**
  * 文章分类(EssayClass)表服务接口
@@ -9,7 +9,7 @@ import com.lq.artifact.essay.entity.EssayClass;
  * @author makejava
  * @since 2021-10-17 15:02:49
  */
-public interface EssayClassService extends IService<EssayClass> {
+public interface BlogSortService extends IService<BlogSort> {
 
 }
 

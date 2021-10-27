@@ -3,13 +3,13 @@ spring:
     name: transaction-server
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/artifact?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://192.168.31.105:3307/artifact?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
 
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 192.168.31.105
     lettuce:
       pool:
         max-active: 8   #最大连接数据库连接数,设 -1 为没有限制
@@ -37,10 +37,13 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+#  mvc:
+#    static-path-pattern: /uploads/**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/file/,classpath:/static/,classpath:/public/,file:/home/uploads/
 # Mybatis-Plus 配置
 mybatis-plus:
   #  mapper-locations: classpath:/mapper/*Mapper.xml
-
   global-config:
     id-type: 1  #0:数据库ID自增   1:用户输入id
     db-column-underline: false
